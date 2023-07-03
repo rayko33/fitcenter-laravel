@@ -1,3 +1,6 @@
+@php
+    $title='Home'
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +33,7 @@
                     <div class="card d-flex text-center shadow p-3 mb-5 mt-5">
                         <div class="card-body">
                           <h5 class="card-title">Usuarios Activos</h5>
-                          <h2 class="card-title" >0</h2>
+                          <h2 class="card-title" >{{$activeClient}}</h2>
                           <a href="{{route('clientes')}}" class="card-link " align='center'>Ver tus clientes</a>
                         </div>
                     </div>
