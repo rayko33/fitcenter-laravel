@@ -70,6 +70,7 @@ class CoachSessionController extends Controller
                 $sessionsJson []=['title'=>$session->title,
                                   'start'=>$start->format('Y-m-d H:i'),
                                   'end'=>$end->format('Y-m-d H:i'),
+                                  'colorText'=>$session->textColor,
                                   'status'=>$session->status,
                                   'sessionType'=>$session->tipo_sesion];
             }
