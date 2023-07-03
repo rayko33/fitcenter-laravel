@@ -3,9 +3,14 @@
 use App\Http\Controllers\CoacheClientAssoc;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachLoginController;
+use App\Http\Controllers\CoachSessionController;
 use App\Http\Controllers\RegisterCoachController;
 use App\Http\Controllers\LoginClientController;
 use App\Http\Controllers\RegisterClientController;
+use App\Http\Controllers\DashboardCoachController;
+use App\Http\Controllers\MembersSessionController;
+
+use App\Http\Controllers\DashboardCoach;
 use App\Models\Coach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +32,9 @@ use function PHPUnit\Framework\throwException;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index', function () {
+    return view('home');
+});
 
 /*Route::get('/dashcoach',function(){
     return view('coach.dashboard');
@@ -46,6 +54,9 @@ Route::middleware('guest')->group(function(){
     if(Auth::guard('coach')->check()||Auth::guard('client')->check()){
         return abort(403,'Acceso restringido');
     }
+    if(Auth::guard('client')->check()){
+        return abort(403,'Acceso restringido');
+    }
     Route::get('/logincoach',[CoachLoginController::class,'create'])->name('login');
     Route::get('/authcoach',[CoachLoginController::class,'store'])->name('authenticatecoach');
     Route::get('singincoach',[RegisterCoachController::class,'create'])->name('singin');
@@ -61,12 +72,12 @@ Route::middleware('guest')->group(function(){
     //Route::get('logout',[LoginClientController::class,'destroy'])->name('logoutclient');
 });
 
-
+Route::get('/check',function(){
+    return(Auth::guard('coach')->check());
+});
 
 Route::middleware(['auth:coach'])->group(function () {
-    Route::get('/dashcoach',function(){
-        return view('coach.dashboard');
-    })->name('coachdashbord');
+    Route::get('/dashcoach',[DashboardCoachController::class,'index'])->name('coachdashbord');
 
     Route::get('/clientes',[CoacheClientAssoc::class,'index'])->name('clientes');
 
@@ -75,6 +86,10 @@ Route::middleware(['auth:coach'])->group(function () {
     })->name('home');
     
     Route::get('logoutcoach',[CoachLoginController::class,'destroy'])->name('outcoach');
+
+    Route::get('/sesiones',[CoachSessionController::class,'index'])->name('sessions');
+    Route::get('/trainingsessions/{id?}',[CoachSessionController::class,'show'])->name('trainingsession');
+    Route::get('/trainingsessions/member/{id?}',[MembersSessionController::class,'show'])->name('sessionMember');
     
 });
 
