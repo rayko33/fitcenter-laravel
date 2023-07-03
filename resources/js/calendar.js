@@ -41,8 +41,8 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           var modal = document.getElementById('exampleModal');
 
         // Obtener todos los elementos dentro del modal que se pueden deshabilitar
-          var elements = modal.querySelectorAll('input, select, textarea, button');
-
+          var elements = modal.querySelectorAll('input, select, textarea, button:not(#close)');
+          
         // Deshabilitar todos los elementos dentro del modal
           elements.forEach(function (element) {
             if (!element.classList.contains('btn-close')) {
@@ -52,14 +52,14 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           });
         $('#exampleModal').modal('show')
       }
-      alert(info.event.extendedProps.status)
+      
       // Obtener el modal por su ID
       $('#exampleModal').modal('show')
     // change the border color just for fun
     info.el.style.borderColor = 'red';
   },
   dateClick: function(info) {
-    alert('Clicked on: ' + info.dateStr);
+    
     $('#exampleModal').modal('show')
     
   }
@@ -138,6 +138,19 @@ $("#selectClientes").on("change", function () {
 
 
 $(".btn-close").on("click", function () {
+
+  var modal = document.getElementById('exampleModal');
+  var elements = modal.querySelectorAll('input, select, textarea, button');
+
+  elements.forEach(function (element) {
+    if (!element.classList.contains('btn-close')) {
+      element.disabled = true;
+    }
+  
+  });
+});
+
+$("#btn-close").on("click", function () {
 
   var modal = document.getElementById('exampleModal');
   var elements = modal.querySelectorAll('input, select, textarea, button');
