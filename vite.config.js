@@ -7,7 +7,11 @@ export default defineConfig({
             input: ['resources/css/app.css', 
                     'resources/js/app.js',
                     'resources/css/dashboar.css',
-                    'resources/css/backgroundlogin.css'],
+                    'resources/css/backgroundlogin.css',
+                    'resources/js/calendar.js',
+                    'resources/js/CalendarData.js',
+                    'resources/css/loader.css'],
+                    
             refresh: true,
         }),
     ],
