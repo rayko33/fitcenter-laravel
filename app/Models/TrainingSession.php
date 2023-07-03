@@ -14,13 +14,15 @@ use Illuminate\Database\Eloquent\Model;
  * Class TrainingSession
  * 
  * @property int $idsession
- * @property string $title
- * @property Carbon $start
- * @property Carbon $end
- * @property int $max_members
- * @property string $location
- * @property string $status
+ * @property string|null $title
+ * @property Carbon|null $start
+ * @property Carbon|null $end
+ * @property int|null $max_members
+ * @property string|null $location
+ * @property string|null $status
  * @property int $coach
+ * @property string|null $tipo_sesion
+ * @property string|null $visibilidad
  * 
  * @property Collection|SessionMember[] $session_members
  *
@@ -46,7 +48,9 @@ class TrainingSession extends Model
 		'max_members',
 		'location',
 		'status',
-		'coach'
+		'coach',
+		'tipo_sesion',
+		'visibilidad'
 	];
 
 	public function coach()
