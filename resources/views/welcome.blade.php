@@ -28,15 +28,16 @@
                         @if (Route::has('singin'))
                             <a href="{{ route('singin') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
                         @endif
-                    @endif
-                    @if (Auth::guard('client')->check())
-                        <a href="{{ route('dashbordclient') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                    <a href="{{ route('singinclient') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register client</a>
+                        @if (Auth::guard('client')->check())
+                            <a href="{{ route('dashbordclient') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+                        @else
+                            <a href="{{ route('singinclient') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register client</a>
 
-                    @if (Route::has('singin'))
-                        <a href="{{ route('loginclient') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">login client</a>
+                        @if (Route::has('singin'))
+                            <a href="{{ route('loginclient') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">login client</a>
+                        @endif
                     @endif
+                   
                 @endif
                 </div>
             @endif
@@ -141,7 +142,7 @@
                     </div>
 
                     <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }} {{Auth::guard('coach')->user()}} )
+                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }} {{Auth::guard('coach')->user()}} {{Auth::guard('coach')->check()}} )
                     </div>
                 </div>
             </div>
