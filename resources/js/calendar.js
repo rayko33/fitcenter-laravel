@@ -14,7 +14,7 @@ function hideLoader() {
 
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
-  themeSystem: 'bootstrap5',
+  
   locale:'es',  
   initialView: 'dayGridMonth',
   height: 'auto',
@@ -42,6 +42,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
         // Obtener todos los elementos dentro del modal que se pueden deshabilitar
           var elements = modal.querySelectorAll('input, select, textarea, button:not(#close)');
+          alert(info.event.textColor)
           
         // Deshabilitar todos los elementos dentro del modal
           elements.forEach(function (element) {
@@ -144,7 +145,7 @@ $(".btn-close").on("click", function () {
 
   elements.forEach(function (element) {
     if (!element.classList.contains('btn-close')) {
-      element.disabled = true;
+      element.disabled = false;
     }
   
   });
@@ -157,8 +158,30 @@ $("#btn-close").on("click", function () {
 
   elements.forEach(function (element) {
     if (!element.classList.contains('btn-close')) {
-      element.disabled = true;
+      element.disabled = false;
     }
   
   });
+});
+
+let datetime1 = document.getElementById('start')
+let datetime2 = document.getElementById('end')
+
+datetime1.addEventListener('input', function() {
+  var datetime1Value = new Date(datetime1.value);
+  var datetime2Value = new Date(datetime2.value);
+  
+  if(datetime1Value>datetime2Value && datetime2Value!=null){
+    datetime2.value = datetime1.value;
+  }
+});
+
+datetime2.addEventListener('input', function() {
+  var datetime1Value = new Date(datetime1.value);
+  var datetime2Value = new Date(datetime2.value);
+  
+  if (datetime1Value > datetime2Value) {
+    alert('la hora de termino no puede ser menor a la hora de inicio')
+    datetime2.value = datetime1.value;
+  }
 });
