@@ -67,10 +67,11 @@ class CoachSessionController extends Controller
            foreach($sessios as $session){
                 $start= Carbon::createFromDate($session->start);
                 $end= Carbon::createFromDate($session->end);
-                $sessionsJson []=['title'=>$session->title,
+                $sessionsJson []=['id'=>$session->idsession,
+                                  'title'=>$session->title,
                                   'start'=>$start->format('Y-m-d H:i'),
                                   'end'=>$end->format('Y-m-d H:i'),
-                                  'colorText'=>$session->textColor,
+                                  'textColor'=>$session->textColor,
                                   'status'=>$session->status,
                                   'sessionType'=>$session->tipo_sesion];
             }
