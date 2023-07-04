@@ -11,8 +11,9 @@ function hideLoader() {
   var loader = document.getElementById("loader");
   loader.style.display = "none";
 }
-
+//obtener elemento donde se va a renderizar el calendario 
 var calendarEl = document.getElementById('calendar');
+//configuracion inical para el despliegue del calendario 
 var calendar = new FullCalendar.Calendar(calendarEl, {
   
   locale:'es',  
@@ -41,7 +42,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           var modal = document.getElementById('exampleModal');
 
         // Obtener todos los elementos dentro del modal que se pueden deshabilitar
-          var elements = modal.querySelectorAll('input, select, textarea, button:not(#close)');
+          var elements = modal.querySelectorAll('input, select, textarea, button:not(#close,)');
           alert(info.event.textColor)
           
         // Deshabilitar todos los elementos dentro del modal
@@ -66,27 +67,18 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   }
 
 });
-
+//rederizar calendario calendario
 document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
     
 });
 
-  
- /* $('.card').click(function() {
-    var cardId = $(this).attr('value');
-    //calendar.setOption('events', `http://127.0.0.1:8000/trainingsessions/${cardId}`)
-    //calendar.refetchEvents();
-    console.log('ID de la tarjeta:', cardId);
-  });*/
-
+//evento input buscar cliente en la tabla 
   $("#searchInput").on("input", function () {
     var div = document.getElementById('d');
     var ancho = div.offsetWidth;
     var altura = div.offsetHeight;
 
-    console.log("Ancho: " + ancho + "px");
-    console.log("Altura: " + altura + "px");
     var searchTerm = $(this).val().toLowerCase();
 
     $("#tableBody tr").each(function () {
@@ -100,8 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//busqueda global dropdown clientes
 $("#selectClientes").select2();
 
+//Evento click filtrar cita por usuario tabla
 $("#tableBody").on("click", "tr", function () {
 
   var id = $(this).find("td:eq(0)").text();
@@ -129,7 +123,7 @@ $("#tableBody").on("click", "tr", function () {
 
 });
 
-
+//evento change filtrar sitas por clientes
 $("#selectClientes").on("change", function () {
   var id = $(this).val();
   console.log("ID: " + id);
@@ -137,7 +131,7 @@ $("#selectClientes").on("change", function () {
   calendar.refetchEvents();
 });
 
-
+//evento click habilitar inputs y botones modal cerrar header
 $(".btn-close").on("click", function () {
 
   var modal = document.getElementById('exampleModal');
@@ -151,6 +145,7 @@ $(".btn-close").on("click", function () {
   });
 });
 
+//Evento click habilitar inputs y botnes modal al cerrar con boton footer
 $("#btn-close").on("click", function () {
 
   var modal = document.getElementById('exampleModal');
@@ -163,10 +158,10 @@ $("#btn-close").on("click", function () {
   
   });
 });
-
+//Obtener elementos del DOM con id start y end (datetime-local)
 let datetime1 = document.getElementById('start')
 let datetime2 = document.getElementById('end')
-
+//evento input limitar end segun datetime-local start
 datetime1.addEventListener('input', function() {
   var datetime1Value = new Date(datetime1.value);
   var datetime2Value = new Date(datetime2.value);
@@ -175,7 +170,7 @@ datetime1.addEventListener('input', function() {
     datetime2.value = datetime1.value;
   }
 });
-
+//Evento input limitar datetime-local y mostrar alert de fecha invalida 
 datetime2.addEventListener('input', function() {
   var datetime1Value = new Date(datetime1.value);
   var datetime2Value = new Date(datetime2.value);
