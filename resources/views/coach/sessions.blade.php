@@ -92,8 +92,22 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="title" class="col-form-label">Recipient:</label>
+              <input type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3 form-inline">
+              <label for="start" class="col-form-label mr-2">Inicio</label>
+              <input type="datetime-local" class="form-control" id="start">
+              <label for="end" class="col-form-label mx-2">Termino</label>
+              <input type="datetime-local" class="form-control" id="end">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
             </div>
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Message:</label>
