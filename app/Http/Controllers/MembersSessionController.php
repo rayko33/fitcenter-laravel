@@ -38,10 +38,8 @@ class MembersSessionController extends Controller
     public function show($id)
     {
         $sessions = SessionMember::where('client','=',$id)->
-        join('training_sessions','training_sessions.idsession','=','session')->
-        select('training_sessions.idsession',
-        'training_sessions.start','training_sessions.end',
-        'training_sessions.title')->get();
+        join('training_sessions','training_sessions.idsession','=','session')
+        ->get();
         
         $sessionsJson=[];
            foreach($sessions as $session){
@@ -50,7 +48,10 @@ class MembersSessionController extends Controller
                 $sessionsJson []=['id'=>$session->idsession,
                                   'title'=>$session->title,
                                   'start'=>$start->format('Y-m-d H:i'),
-                                  'end'=>$end->format('Y-m-d H:i')];
+                                  'end'=>$end->format('Y-m-d H:i'),
+                                  'textColor'=>$session->textColor,
+                                  'status'=>$session->status,
+                                  'sessionType'=>$session->tipo_sesion];
             }
 
             return response()->json($sessionsJson);
