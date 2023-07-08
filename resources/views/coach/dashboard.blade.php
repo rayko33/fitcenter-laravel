@@ -16,7 +16,7 @@
    
     @include('coach.partial.navbar')
 
-        <div>{{Auth::user()}}</div>
+        
 
         <div class="container-lg shadow p-3 mb-5 mt-5">
             <div class="row">
@@ -38,12 +38,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-3">
                   Column
                 </div>
             </div>
-            
+            <div class="row">
+                <div class="col-md-3 col-lg-12"> 1</div>
+            </div>
         </div>
     @include('cdn.bootstrapscrip')
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 border pr-4 ">
+                <div class="card mt-3 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Proximas sesiones</h5>
+                    </div>
+                </div>
+                <!-- Contenido de la columna izquierda -->
+            </div>
+            <div class="col-sm-6 border">
+                <h2>Sección en medio</h2>
+                <!-- Contenido de la sección en medio -->
+            </div>
+           
+        </div>
+    </div>
 </body>
 </html>
