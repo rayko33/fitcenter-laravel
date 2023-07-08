@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginClientController;
 use App\Http\Controllers\RegisterClientController;
 use App\Http\Controllers\DashboardCoachController;
 use App\Http\Controllers\MembersSessionController;
-
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardCoach;
 use App\Models\Coach;
 use Illuminate\Http\Request;
@@ -90,6 +90,7 @@ Route::middleware(['auth:coach'])->group(function () {
     Route::get('/sesiones',[CoachSessionController::class,'index'])->name('sessions');
     Route::get('/trainingsessions/{id?}',[CoachSessionController::class,'show'])->name('trainingsession');
     Route::get('/trainingsessions/member/{id?}',[MembersSessionController::class,'show'])->name('sessionMember');
+    Route::get('/profile',[ProfileController::class,'index'])->name('coach.profile');
     
 });
 
