@@ -28,21 +28,23 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   eventClick: function(info) {
       if(info.event.extendedProps.status=='finalizada'||info.event.extendedProps.status=='cancelada'){
           var modal = document.getElementById('modaleventClick');
-
+      
         // Obtener todos los elementos dentro del modal que se pueden deshabilitar
           var elements = modal.querySelectorAll('input, select, textarea, button:not(#close)');
-          
           
         // Deshabilitar todos los elementos dentro del modal
           elements.forEach(function (element) {
             if (!element.classList.contains('btn-close')) {
               element.disabled = true;
             }
-          
           });
         $('#modaleventClick').modal('show')
       }
-      $('#titleEvent').text(info.event.title)
+         
+      $('#titleEventupdate').val(info.event.title)
+      //$('#start-update').val(info.event.start)
+      $('#start-update').val(moment(info.event.start).format('YYYY-MM-DDTHH:mm'));
+      $('#end-update').val(moment(info.event.end).format('YYYY-MM-DDTHH:mm'));
       $('#modaleventClick').modal('show')
       
     
