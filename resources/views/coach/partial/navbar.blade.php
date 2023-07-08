@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse justify-content-center"  id="navbarNav" >
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="{{route('coachdashbord')}}">Home</a>
+            <a class="nav-link active text-white mx-auto" aria-current="page" href="{{route('coachdashbord')}}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="{{route('clientes')}}">Clientes</a>
@@ -18,30 +18,16 @@
           </li>
           <li class="nav-item dropdown">
             <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Opciones
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item text-danger" href="{{route('outcoach')}}">Cerrar sesión</a></li>
-              
+              <li><a class="dropdown-item" href="{{route('coach.profile')}}">Perfil</a></li>
             </ul>
           </li>
         </ul>
-        <div class="navbar-collapse justify-content-right collapse">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item text-danger" href="{{route('outcoach')}}">Cerrar sesión</a></li>
-                
-              </ul>
-            </li>
-          </ul>
-        </div>
           
       </div>
-
-    
     </div>
   </nav>
+ 
