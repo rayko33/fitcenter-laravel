@@ -165,8 +165,8 @@
           <div class="modal-body">
             <form action="">
               <div class="mb-3">
-                <label for="titleEvent" class="col-form-label">Titulo</label>
-                <input type="text" class="form-control">
+                <label for="titleEventupdate" class="col-form-label">Titulo</label>
+                <input type="text" class="form-control" id="titleEventupdate">
                 
               </div>
               <div class="mb-3 form-inline">
@@ -234,6 +234,7 @@
     
     @vite(['resources/js/calendar.js'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </body>
 </html>
 
