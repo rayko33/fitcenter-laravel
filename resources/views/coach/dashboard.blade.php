@@ -36,27 +36,33 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-lg-4 border pr-4 ">
-            <div class="card mt-3 mb-3">
-                <div class="card-header bg-white " style="">
-                    
-                </div>
-                <div class="card-body">
-                    @foreach ($sessions as $session)
-                        <div class="card m-3">
-                            <div class="card-header"></div>
-                            <div class="card-body">
-                                <p>{{$session->title}}</p>
-                                <div class="d-inline">
-                                    <p>{{$session->start}}</p>
-                                    <p>{{$session->end}}</p>
+        <div class="col-lg-4 border pr-4 text-center">
+            @if (count($sessions)==0)
+                <h4>No hay sesiones esta semana</h4>
+
+            @else
+                <div class="card mt-3 mb-3">
+                    <div class="card-header bg-white " style="">
+                        
+                    </div>
+                    <div class="card-body">
+                        @foreach ($sessions as $session)
+                            <div class="card m-3">
+                                <div class="card-header"></div>
+                                <div class="card-body">
+                                    <p>{{$session->title}}</p>
+                                    <div class="d-inline">
+                                        <p>{{$session->start}}</p>
+                                        <p>{{$session->end}}</p>
+                                    </div>
+                                    
                                 </div>
-                                
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endif
+          
             <!-- Contenido de la columna izquierda -->
         </div>
         <div class="col-sm-6 border">
