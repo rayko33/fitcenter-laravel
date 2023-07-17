@@ -1,4 +1,4 @@
-import { GetAllEvents } from "./CalendarData";
+
 import axios, { Axios }  from "axios";
 function showLoader() {
   // Mostrar loader
@@ -20,11 +20,11 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
   initialView: 'dayGridMonth',
   height: 'auto',
   headerToolbar: {
-    left: 'dayGridMonth,timeGridWeek,timeGridDay',
+    left: 'dayGridMonth,timeGridWeek,timeGridDay,myCustomButton',
     center: 'title',
     right: 'prev,next' 
   },
-  events: `http://127.0.0.1:8000/trainingsessions/`,
+  events:`http://127.0.0.1:8000/trainingsessions/`,
   eventClick: function(info) {
       if(info.event.extendedProps.status=='finalizada'||info.event.extendedProps.status=='cancelada'){
           var modal = document.getElementById('modaleventClick');
@@ -83,7 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //busqueda global dropdown clientes
 $("#selectClientes").select2({
-  width: '100%'
+  width: '100%',
+  language: {
+    noResults: function() {
+      return "Sin resultados";
+    }
+  }
 });
 
 //Evento click filtrar cita por usuario tabla
@@ -317,3 +322,27 @@ $("#selectClientesUpdate").select2({
   dropdownParent: $('#modaleventClick'),
   width: '100%'
 });
+
+/*customButtons: {
+  myCustomButton: {
+    text: 'Todas las seciones',
+    click: function() {
+        axios.get(`http://127.0.0.1:8000/trainingsessions/`)
+          .then(function (response) {
+              // Manipular los datos recibidos
+              
+              
+              calendar.setOption('events', response.data);
+              calendar.refetchEvents();
+          })
+          .catch(function (error) {
+              // Manejar errores si corresponde
+              console.log("Error:", error);
+          })
+          .finally(function () {
+              // Ocultar loader al completar la solicitud
+              //hideLoader();
+          });
+    }
+  }
+}*/
