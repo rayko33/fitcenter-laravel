@@ -1,23 +1,12 @@
-@php
-    $title='Sesiones'
-@endphp
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/loader.css'])
-    @vite(['resources/css/dashboar.css'])
-    @include('../cdn/bootstrapcss')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <title>Document</title>
-</head>
-<body>
-    
-    @include('coach.partial.navbar')
-    
-  
+@extends('coach.layouts.baselayouts')
+@section('section','Sesiones')
+@section('title','Sesiones')
+
+@section('additionalCSS')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+@endsection
+
+@section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
@@ -77,10 +66,10 @@
     </div>
 
     <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Launch demo modal
     </button>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -147,9 +136,9 @@
     </div>
     <!-- -->
 
-  <!--Modal eventClick -->
+    <!--Modal eventClick -->
 
- 
+
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaleventClick">
       Launch demo modal
     </button>
@@ -228,13 +217,11 @@
         </div>
       </div>
     </div>
-
-    @include('../cdn/bootstrapscrip')
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    
-    @vite(['resources/js/calendar.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-</body>
-</html>
-
+@endsection
+@section('additionalScript')
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+      
+  @vite(['resources/js/calendar.js'])
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+@endsection
