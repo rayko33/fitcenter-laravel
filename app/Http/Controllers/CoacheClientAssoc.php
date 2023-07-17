@@ -18,7 +18,7 @@ class CoacheClientAssoc extends Controller
         try{
             $assoc =CoachClientAssociation::join('clients','clients.idclient','=','client')
             ->where('coach','=',Auth::user()->idcoaches)
-            ->select('clients.idclient','clients.nameclient','clients.lastnameclient','clients.rutclient')
+            ->select('clients.idclient','clients.nameclient','clients.lastnameclient','clients.rutclient','status')
             ->get();
             $clients=[];
             foreach($assoc as $client){
@@ -26,7 +26,8 @@ class CoacheClientAssoc extends Controller
                     'id'=>$client->idclient,
                     'name'=>$client->nameclient,
                     'lastname'=>$client->lastnameclient,
-                    'rut'=> $client->rutclient
+                    'rut'=> $client->rutclient,
+                    'status'=>$client->status
                 ];
             }
             return view('coach.client',['clients'=>json_encode($clients),
@@ -56,9 +57,70 @@ class CoacheClientAssoc extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( $status)
     {
-        //
+        switch($status){
+            case 'active':
+                    $assoc =CoachClientAssociation::join('clients','clients.idclient','=','client')
+                    ->where(['coach'=>Auth::user()->idcoaches,'status'=>$status])
+                    ->select('clients.idclient','clients.nameclient','clients.lastnameclient','clients.rutclient','status')
+                    ->get();
+                    $clients=[];
+                    foreach($assoc as $client){
+                        $clients[]=[
+                            'id'=>$client->idclient,
+                            'name'=>$client->nameclient,
+                            'lastname'=>$client->lastnameclient,
+                            'rut'=> $client->rutclient,
+                            'status'=>$client->status
+                        ];
+                    }
+
+                    return response()->json($clients);
+
+                break;
+            case 'inactive':
+                    $assoc =CoachClientAssociation::join('clients','clients.idclient','=','client')
+                    ->where(['coach'=>Auth::user()->idcoaches,'status'=>$status])
+                    ->select('clients.idclient','clients.nameclient','clients.lastnameclient','clients.rutclient','status')
+                    ->get();
+
+                    $clients=[];
+                    foreach($assoc as $client){
+                        $clients[]=[
+                            'id'=>$client->idclient,
+                            'name'=>$client->nameclient,
+                            'lastname'=>$client->lastnameclient,
+                            'rut'=> $client->rutclient,
+                            'status'=>$client->status
+                        ];
+                    }
+                    
+                    return response()->json($clients);
+
+                break;
+            default:
+                    $assoc =CoachClientAssociation::join('clients','clients.idclient','=','client')
+                    ->where('coach','=',Auth::user()->idcoaches)
+                    ->select('clients.idclient','clients.nameclient','clients.lastnameclient','clients.rutclient','status')
+                    ->get();
+
+                    $clients=[];
+                    foreach($assoc as $client){
+                        $clients[]=[
+                            'id'=>$client->idclient,
+                            'name'=>$client->nameclient,
+                            'lastname'=>$client->lastnameclient,
+                            'rut'=> $client->rutclient,
+                            'status'=>$client->status
+                        ];
+                    }
+                    return response()->json($clients);
+
+                break;    
+
+        }
+       
     }
 
     /**
