@@ -91,6 +91,7 @@ Route::middleware(['auth:coach'])->group(function () {
     Route::get('/trainingsessions/{id?}',[CoachSessionController::class,'show'])->name('trainingsession');
     Route::get('/trainingsessions/member/{id?}',[MembersSessionController::class,'show'])->name('sessionMember');
     Route::get('/profile',[ProfileController::class,'index'])->name('coach.profile');
+    Route::get('/clients/status/{status?}',[CoacheClientAssoc::class,'show'])->name('client.status');
     
 });
 
