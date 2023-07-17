@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coach;
+use App\Models\TrainingSession;
 use Illuminate\Http\Request;
 use App\Models\CoachClientAssociation;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardCoachController extends Controller
@@ -14,11 +16,24 @@ class DashboardCoachController extends Controller
      */
     public function index()
     {
+        $today = Carbon::today();
+        
+        $startWeek = $today->startOfWeek();
+        $endtWeek = $today->copy()->endOfWeek();
+        $sessions = TrainingSession::where(
+                    ['coach'=>Auth::user()->idcoaches,
+                    'status'=>'pendiente'])
+                    ->whereBetween('start',[$startWeek,$endtWeek])
+                    ->get();
+
         $activeClient = CoachClientAssociation::where(
                         ['coach'=>Auth::user()->idcoaches,
                         'status'=>'active'])->get()->count();
         
-        return view('coach.dashboard',['activeClient'=>$activeClient]);
+        return view('coach.dashboard',['activeClient'=>$activeClient,
+                                        'startWeek'=>$startWeek,
+                                         'endWeek'=>$endtWeek,
+                                        'sessions'=>$sessions]);
     }
 
     /**
