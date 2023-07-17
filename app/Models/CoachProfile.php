@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class CoachProfile
  * 
- * @property int $iprofile
+ * @property int $idprofile
  * @property Carbon|null $yearexperience
  * @property string|null $about_me
  * @property string|null $profile_picture
@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
 class CoachProfile extends Model
 {
 	protected $table = 'coach_profile';
-	protected $primaryKey = 'iprofile';
+	protected $primaryKey = 'idprofile';
 	public $timestamps = false;
 
 	protected $casts = [

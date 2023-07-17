@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $status
  * @property Carbon $start_at
  * @property Carbon|null $end_at
+ * @property Carbon|null $create_at
  * @property Carbon|null $update_at
  * 
  *
@@ -34,6 +35,7 @@ class CoachClientAssociation extends Model
 		'client' => 'int',
 		'start_at' => 'datetime',
 		'end_at' => 'datetime',
+		'create_at' => 'datetime',
 		'update_at' => 'datetime'
 	];
 
@@ -43,6 +45,7 @@ class CoachClientAssociation extends Model
 		'status',
 		'start_at',
 		'end_at',
+		'create_at',
 		'update_at'
 	];
 

@@ -14,9 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_excersise_assoc
  * @property int $exercise_routines
  * @property int $client
- * @property int $coaches
  * 
- * @property Coach $coach
  * @property ExerciseRoutine $exercise_routine
  *
  * @package App\Models
@@ -29,24 +27,17 @@ class ExerciseRoutinesAssociation extends Model
 
 	protected $casts = [
 		'exercise_routines' => 'int',
-		'client' => 'int',
-		'coaches' => 'int'
+		'client' => 'int'
 	];
 
 	protected $fillable = [
 		'exercise_routines',
-		'client',
-		'coaches'
+		'client'
 	];
 
 	public function client()
 	{
 		return $this->belongsTo(Client::class, 'client');
-	}
-
-	public function coach()
-	{
-		return $this->belongsTo(Coach::class, 'coaches');
 	}
 
 	public function exercise_routine()

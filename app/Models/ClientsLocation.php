@@ -13,10 +13,11 @@ use Illuminate\Database\Eloquent\Model;
  * Class ClientsLocation
  * 
  * @property int $idclients_locations
- * @property string $city
- * @property string $region
+ * @property int $city
+ * @property int $regio
  * @property string|null $address
  * 
+ * @property Region $region
  * @property Collection|Client[] $clients
  *
  * @package App\Models
@@ -27,11 +28,26 @@ class ClientsLocation extends Model
 	protected $primaryKey = 'idclients_locations';
 	public $timestamps = false;
 
+	protected $casts = [
+		'city' => 'int',
+		'regio' => 'int'
+	];
+
 	protected $fillable = [
 		'city',
-		'region',
+		'regio',
 		'address'
 	];
+
+	public function city()
+	{
+		return $this->belongsTo(City::class, 'city');
+	}
+
+	public function region()
+	{
+		return $this->belongsTo(Region::class, 'regio');
+	}
 
 	public function clients()
 	{

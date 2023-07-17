@@ -7,8 +7,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\Client as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
 /**
  * Class Client
  * 
@@ -29,8 +33,9 @@ use Illuminate\Foundation\Auth\Client as Authenticatable;
  *
  * @package App\Models
  */
-class Client extends Authenticatable
+class Client extends Model
 {
+	use HasApiTokens, HasFactory, Notifiable;
 	protected $table = 'clients';
 	protected $primaryKey = 'idclient';
 	public $timestamps = false;
@@ -65,7 +70,7 @@ class Client extends Authenticatable
 	public function coaches()
 	{
 		return $this->belongsToMany(Coach::class, 'coach_client_association', 'client', 'coach')
-					->withPivot('idcoach_client_assoc', 'status', 'start_at', 'end_at', 'update_at');
+					->withPivot('idcoach_client_assoc', 'status', 'start_at', 'end_at', 'create_at', 'update_at');
 	}
 
 	public function coaches_ratings()
