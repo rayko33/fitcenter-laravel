@@ -10,7 +10,8 @@ export default defineConfig({
                     'resources/css/backgroundlogin.css',
                     'resources/js/calendar.js',
                     'resources/js/CalendarData.js',
-                    'resources/css/loader.css'],
+                    'resources/css/loader.css',
+                    'resources/js/client.js'],
                     
             refresh: true,
         }),
