@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardCoachController;
 use App\Http\Controllers\MembersSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardCoach;
+use App\Http\Controllers\CoachCategoryAssocController;
 use App\Models\Coach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,7 +93,10 @@ Route::middleware(['auth:coach'])->group(function () {
     Route::get('/trainingsessions/member/{id?}',[MembersSessionController::class,'show'])->name('sessionMember');
     Route::get('/profile',[ProfileController::class,'index'])->name('coach.profile');
     Route::get('/clients/status/{status?}',[CoacheClientAssoc::class,'show'])->name('client.status');
-    
+    Route::post('/session/create',[CoachSessionController::class,'store'])->name('sesion.create');
+    Route::post('/categoryCoach/delete/{category}',[CoachCategoryAssocController::class,'destroy'])->name('coache.delete.category');
+    Route::get('/categoryCoach/get',[CoachCategoryAssocController::class,'show'])->name('coache.get.category');
+    Route::post('/categoryCoach/add',[CoachCategoryAssocController::class,'store'])->name('coache.add.category');
 });
 
 
