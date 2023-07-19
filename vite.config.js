@@ -11,7 +11,8 @@ export default defineConfig({
                     'resources/js/calendar.js',
                     'resources/js/CalendarData.js',
                     'resources/css/loader.css',
-                    'resources/js/client.js'],
+                    'resources/js/client.js',
+                    'resources/js/profilecoach.js'],
                     
             refresh: true,
         }),
