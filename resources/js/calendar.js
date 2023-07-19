@@ -1,5 +1,6 @@
 
 import axios, { Axios }  from "axios";
+let baseUrl =`http://127.0.0.1:8000/`
 function showLoader() {
   // Mostrar loader
   var loader = document.getElementById("loader");
@@ -300,6 +301,45 @@ startUpdate.addEventListener('input', function() {
     endUpdate.value = startUpdate.value
   }
 });
+
+// Obtén el elemento del radio check de modo online
+let modoOnline = document.getElementById('online');
+// Obtén el elemento del grupo direccion
+let direccion = document.getElementById('direccionContainer');
+// Obtén el elemento del radio check de modo presencial
+let modoPresencial = document.getElementById('presencial');
+// Agrega un evento change al radio check grupal
+modoPresencial.addEventListener('change', function() {
+  // Si se selecciona la opción grupal, muestra el grupo de cantidad de miembros
+  if (modoPresencial.checked) {
+    direccion.style.display = 'block';
+  } else {
+    // Si se selecciona la opción individual, oculta el grupo de cantidad de miembros
+    direccion.style.display = 'none';
+  }
+});
+// Agrega un evento change al radio check individual
+modoOnline.addEventListener('change', function() {
+  // Si se selecciona la opción individual, El elemento cantidad de miembros se oculta
+  if (modoOnline.checked) {
+    direccion.style.display = 'none';
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Evento input limitar datetime-local y mostrar alert de fecha invalida 
 endUpdate.addEventListener('input', function() {
   var startDateValue = new Date(startUpdate.value)
@@ -322,6 +362,44 @@ $("#selectClientesUpdate").select2({
   dropdownParent: $('#modaleventClick'),
   width: '100%'
 });
+$("#selectClient").select2({
+  dropdownParent: $('#exampleModal'),
+  width: '100%'
+});
+
+$('#crearCita').on('click',()=>{
+  let sessionForm = document.getElementById('createSessionForm')
+  let data = new FormData(sessionForm)
+  for (const [campo, valor] of data) {
+    console.log(`Campo: ${campo}, Valor: ${valor}`);
+  }
+  
+  axios.post(`${baseUrl}session/create`,data)
+  .then((response)=>{
+    alert(JSON.stringify(response.data))
+    calendar.refetchEvents()
+    $("#exampleModal").modal('hide')
+  }).catch((error)=>{
+    if(error.response && error.response.status === 422){
+      alert(JSON.stringify(error.response.data.errors))
+    }
+      
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*customButtons: {
   myCustomButton: {
