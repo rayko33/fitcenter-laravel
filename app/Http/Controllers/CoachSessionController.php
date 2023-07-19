@@ -53,7 +53,43 @@ class CoachSessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $membersquantity=0;
+        $request ->validate([
+            'title'=>'required|min:10',
+            'start'=>'required|date',
+            'end'=>'required|date',
+            
+            
+        ],
+        [
+            'title.required'=>'El titulo no puede estar vacio',
+            'title.min'=> 'el titulo debe tener al menos 10 caracteres',
+            'start.required'=>'Debe seleccionar una fecha de inicio',
+            'end.required'=> 'Debe seleccionar una fecha de finalizacion',
+            
+
+        ]);
+
+        if($request->cantidadMiembros==null){
+            $membersquantity=1;
+        }
+        $membersquantity=$request->cantidadMiembros;
+        $session = TrainingSession::create([
+            'title'=> $request->title,
+            'start'=> $request->start,
+            'end'=>$request->end,
+            'max_members'=>$request->$membersquantity,
+            'location'=>$request->direccion,
+            'status'=>'pendiente',
+            'coach'=>Auth::user()->idcoaches,
+            'tipo_sesion'=>$request->tipoSesion,
+            'visibilidad'=>$request->visibilidad,
+            'textColor'=>'green',
+            'mode'=>$request->modo,
+        ]);
+        $session->save();
+        return response()->json(['status'=>200,
+                                 'massage'=>'Session agregada con exito']);
     }
 
     /**
