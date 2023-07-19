@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $tipo_sesion
  * @property string|null $visibilidad
  * @property string|null $textColor
+ * @property string|null $mode
  * 
  * @property Collection|SessionMember[] $session_members
  *
@@ -52,7 +53,8 @@ class TrainingSession extends Model
 		'coach',
 		'tipo_sesion',
 		'visibilidad',
-		'textColor'
+		'textColor',
+		'mode'
 	];
 
 	public function coach()
