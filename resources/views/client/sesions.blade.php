@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>{{$trainer->idcoaches}}</td>
                                         <td>{{$trainer->namecoach}} {{$trainer->lastnamecoach}}</td>
-                                        
+                                        <td>{{$trainer->status}}</td>
                                         <!-- Agrega más columnas según tus necesidades -->
                                     </tr>
                                 @endforeach

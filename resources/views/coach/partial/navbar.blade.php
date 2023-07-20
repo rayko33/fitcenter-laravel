@@ -14,7 +14,7 @@
             <a class="nav-link text-white" href="{{route('clientes')}}">Clientes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{{route('sessions')}}">Sesiones</a>
+            <a class="nav-link text-white" href="{{route('sessions.index')}}">Sesiones</a>
           </li>
           <li class="nav-item dropdown">
             <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">

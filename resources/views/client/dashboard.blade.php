@@ -41,19 +41,27 @@
                     <div class="card-header bg-white " style="">
                     </div>
                     <div class="card-body">
-                        
+                        @foreach ($sessions as $sesion)
                             <div class="card m-3">
-                                <div class="card-header"></div>
+                                <div class="card-header bg-white">
+                                    <h3>{{$sesion->title}}</h3>
+                                </div>
                                 <div class="card-body">
                                     <p></p>
                                     <div class="d-inline">
-                                        <p></p>
-                                        <p></p>
+                                        <label for="start">Inicio</label>
+                                        <p id="start">{{$sesion->start}}</p>
+                                        <label for="end">Termino</label>
+                                        <p id="end">{{$sesion->end}}</p>
+                                        <label for="entrenador">Entrenador</label>
+                                        <p id="entrenador">{{$sesion->namecoach}} {{$sesion->lastnamecoach}}</p>
+                                        <label for="modalidad">Modalidad</label>
+                                        <p id="modalidad">{{$sesion->mode}}</p>
                                     </div>
                                     
                                 </div>
                             </div>
-                        
+                        @endforeach
                     </div>
                 </div>
         

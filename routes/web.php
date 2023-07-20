@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ClientCoachAssoc;
+use App\Http\Controllers\ClientDashboardController;
 use App\Http\Controllers\CoacheClientAssoc;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachLoginController;
@@ -92,7 +93,7 @@ Route::middleware(['auth:coach'])->group(function () {
     
     Route::get('logoutcoach',[CoachLoginController::class,'destroy'])->name('outcoach');
 
-    Route::get('/sesiones',[CoachSessionController::class,'index'])->name('sessions');
+    Route::get('/sesions',[CoachSessionController::class,'index'])->name('sessions.index');
     Route::get('/trainingsessions/{id?}',[CoachSessionController::class,'show'])->name('trainingsession');
     Route::get('/trainingsessions/member/{id?}',[MembersSessionController::class,'show'])->name('sessionMember');
     Route::get('/profile',[ProfileController::class,'index'])->name('coach.profile');
@@ -105,9 +106,7 @@ Route::middleware(['auth:coach'])->group(function () {
 
 
 Route::middleware(['auth:client'])->group(function () {
-    Route::get('/dashclient',function(){
-        return view('client.dashboard');
-    })->name('dashbordclient');
+    Route::get('/dashclient',[ClientDashboardController::class,'index'])->name('dashbordclient');
     Route::get('/getcity/{region}',[CityController::class,'show'])->name('city.sorted');
     Route::get('/searchtrainers',[ClientSearchController::class,'index'])->name('client.searchtrainers');
     Route::get('logout',[LoginClientController::class,'destroy'])->name('logoutclient');
