@@ -15,13 +15,13 @@
               Entrenadores
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mis entrenadores</a></li>
+              <li><a class="dropdown-item" href="{{route('client.trainers')}}">Mis entrenadores</a></li>
               <li><a class="dropdown-item " href="{{route('client.searchtrainers')}}">Buscar entrenadores</a></li>
               
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Citas</a>
+            <a class="nav-link text-white" href="{{route('client.sesions')}}">Sesiones</a>
           </li>
           <li class="nav-item dropdown">
             <button class="btn dropdown-toggle text-white" data-bs-toggle="dropdown" aria-expanded="false">
