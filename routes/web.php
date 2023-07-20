@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ClientCoachAssoc;
 use App\Http\Controllers\CoacheClientAssoc;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachLoginController;
@@ -18,6 +19,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ClientSearchController;
+use App\Http\Controllers\ClientSessions;
+
 use function PHPUnit\Framework\throwException;
 
 /*
@@ -108,5 +111,9 @@ Route::middleware(['auth:client'])->group(function () {
     Route::get('/getcity/{region}',[CityController::class,'show'])->name('city.sorted');
     Route::get('/searchtrainers',[ClientSearchController::class,'index'])->name('client.searchtrainers');
     Route::get('logout',[LoginClientController::class,'destroy'])->name('logoutclient');
-    
+    Route::get('/trainers',[ClientCoachAssoc::class,'index'])->name('client.trainers');
+    Route::get('/sesiones',[ClientSessions::class,'index'])->name('client.sesions');
+    Route::get('/sessions/get/{id}',[ClientSessions::class,'show'])->name('client.sesions.get');
+    Route::get('/sessions/getall',[ClientCoachAssoc::class,'show'])->name('client.sesions.get.all');
+    Route::post('/sessions/cancel/{id}',[ClientSessions::class,'destroy'])->name('client.sesions.cancel');
 });
