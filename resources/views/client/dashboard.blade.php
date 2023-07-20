@@ -1,46 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/dashboar.css'])
-    @include('cdn.bootstrapcss')
-    
-    <title>Document</title>
-</head>
-<body>
-   
-    @include('client.partial.nav')
+@extends('client.layouts.baselayout')
+@section('section','Dashboard')
+@section('title','Dashboard')
 
-        <div>{{Auth::user()}}</div>
+@section('content')
 
-        <div class="container-lg shadow p-3 mb-5 mt-5">
-            <div class="row">
-                <div class="col align-items-center">
-                    <div class="card shadow p-3 mb-5 mt-5">
-                        <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="card-link">Another link</a>
-                        </div>
+    <div class="container-lg shadow p-3 mb-5 mt-5">
+        <div class="row">
+            <div class="col align-items-center">
+                <div class="card shadow p-3 mb-5 mt-5">
+                    <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="card-link">Another link</a>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card d-flex text-center shadow p-3 mb-5 mt-5">
-                        <div class="card-body">
-                          <h5 class="card-title">Usuarios Activos</h5>
-                          <h2 class="card-title" >0</h2>
-                          <a href="{{route('clientes')}}" class="card-link " align='center'>Ver tus clientes</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                  Column
                 </div>
             </div>
-            
+            <div class="col">
+                <div class="card d-flex text-center shadow p-3 mb-5 mt-5">
+                    <div class="card-body">
+                    <h5 class="card-title">Usuarios Activos</h5>
+                    <h2 class="card-title" >0</h2>
+                    <a href="{{route('clientes')}}" class="card-link " align='center'>Ver tus clientes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+            Column
+            </div>
         </div>
-    @include('cdn.bootstrapscrip')
-</body>
-</html>
+        <div class="row">
+            <div class="col-md-3 col-lg-12"> 1</div>
+        </div>
+    </div>
+
+
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-4 border pr-4 text-center">
+                <div class="card mt-3 mb-3">
+                    <div class="card-header bg-white " style="">
+                    </div>
+                    <div class="card-body">
+                        
+                            <div class="card m-3">
+                                <div class="card-header"></div>
+                                <div class="card-body">
+                                    <p></p>
+                                    <div class="d-inline">
+                                        <p></p>
+                                        <p></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+        
+          
+            <!-- Contenido de la columna izquierda -->
+        </div>
+        <div class="col-sm-6 border">
+            <h2>Sección en medio</h2>
+            <!-- Contenido de la sección en medio -->
+        </div>
+    
+    </div>
+    </div>
+
+@endsection
