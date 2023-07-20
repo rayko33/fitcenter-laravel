@@ -33,7 +33,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @package App\Models
  */
-class Client extends Model
+class Client extends Authenticatable
 {
 	use HasApiTokens, HasFactory, Notifiable;
 	protected $table = 'clients';
