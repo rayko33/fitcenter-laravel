@@ -107,5 +107,5 @@ document.getElementById('categories').addEventListener('change', function (event
 let btnCat = document.getElementById('btn-get-categories')
 
 btnCat.addEventListener('click',()=>{
-    getCategories()
+    
 })
