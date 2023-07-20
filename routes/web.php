@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoacheClientAssoc;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachLoginController;
@@ -16,7 +17,7 @@ use App\Models\Coach;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\Http\Controllers\ClientSearchController;
 use function PHPUnit\Framework\throwException;
 
 /*
@@ -104,7 +105,8 @@ Route::middleware(['auth:client'])->group(function () {
     Route::get('/dashclient',function(){
         return view('client.dashboard');
     })->name('dashbordclient');
-
+    Route::get('/getcity/{region}',[CityController::class,'show'])->name('city.sorted');
+    Route::get('/searchtrainers',[ClientSearchController::class,'index'])->name('client.searchtrainers');
     Route::get('logout',[LoginClientController::class,'destroy'])->name('logoutclient');
     
 });
