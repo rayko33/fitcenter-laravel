@@ -13,7 +13,9 @@ export default defineConfig({
                     'resources/css/loader.css',
                     'resources/js/client.js',
                     'resources/js/profilecoach.js',
-                    'resources/js/coachesSearchFilter.js'],
+                    'resources/js/coachesSearchFilter.js',
+                    'resources/js/clientTrainers.js',
+                    'resources/js/clientSessions.js'],
                     
             refresh: true,
         }),
